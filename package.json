@@ -1,0 +1,25 @@
+{
+  "name": "team-profile-generator",
+  "description": "## User Story - AS A manager - I WANT to generate a webpage that displays my team's basic info - SO THAT I have quick access to their emails and GitHub profiles",
+  "version": "1.0.0",
+  "main": "app.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "devDependencies": {
+    "jest": "^28.0.3"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Doctor-Worm/Team-Profile-Generator.git"
+  },
+  "author": "Doctor-Worm",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Doctor-Worm/Team-Profile-Generator/issues"
+  },
+  "homepage": "https://github.com/Doctor-Worm/Team-Profile-Generator#readme"
+}
