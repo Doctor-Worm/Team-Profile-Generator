@@ -3,15 +3,14 @@ const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const generatePage = require('./src/page-template');
+const { writeFile, copyFile } = require('./utils/generate-site.js');
 
 
-function createTeam(teamData) {
+function createTeam() {
     this.manager;
     this.engineer;
     this.intern;
-    if (!teamData.employees) {
-        teamData.employees = [];
-    };
+    this.employees = [];
 };
 
 
@@ -44,7 +43,9 @@ createTeam.prototype.promptManager = function() {
             this.manager.id = id;
             this.manager.email = email;
             this.manager.office = office;
-            console.log(this.manager);
+            this.employees.push(this.manager);
+            // console.log(this.manager);
+            // console.log(this.employees);
 
             this.promptNextOption();
         });
@@ -70,9 +71,12 @@ createTeam.prototype.promptNextOption = function() {
                 this.promptIntern();
             }
             else {
-                // generate page ?? ***
-                generatePage();
-                console.log('Generate that page boi');
+                // generate page
+                console.log('Generating your team!');
+                // console.log(this.employees);
+                const fileContent = generatePage(this.employees);
+                writeFile(fileContent);
+                copyFile();
             }
             
         });
@@ -108,7 +112,9 @@ createTeam.prototype.promptEngineer = function() {
             this.engineer.id = id;
             this.engineer.email = email;
             this.engineer.github = github;
-            console.log(this.engineer);
+            this.employees.push(this.engineer);
+            // console.log(this.engineer);
+            // console.log(this.employees);
 
             this.promptNextOption();
         });
@@ -145,7 +151,9 @@ createTeam.prototype.promptIntern = function() {
             this.intern.id = id;
             this.intern.email = email;
             this.intern.school = school;
-            console.log(this.intern);
+            this.employees.push(this.intern);
+            // console.log(this.intern);
+            // console.log(this.employees);
 
             this.promptNextOption();
         });
@@ -153,3 +161,4 @@ createTeam.prototype.promptIntern = function() {
 
 
 new createTeam().promptManager();
+    
