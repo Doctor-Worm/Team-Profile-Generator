@@ -1,0 +1,7 @@
+header {
+    background-image: linear-gradient(to bottom right, crimson, purple);
+    color: aliceblue;
+    text-align: center;
+    padding: 2%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 1);
+}

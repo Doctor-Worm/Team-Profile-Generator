@@ -1,22 +1,42 @@
 // genereates the cards with employee information
-const generateTeam = () => {
-    return `
-    <div class="card shadow p-0 m-3 border-dark col-3">
-        <div class="card-header">${position}</div>
-        <div class="card-body">
-            <h5 class="cart-title">James Madison</h5>
+const generateTeam = (employees) => {
+    employees.forEach(employee => {
+        let card = `
+        <div class="card shadow p-0 m-3 border-dark col-3">
+            <div class="card-header">${employee.position}</div>
+            <div class="card-body">
+                <h5 class="cart-title">${employee.name}</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">ID: ${employee.id}</li>
+                <li class="list-group-item">Email: ${employee.email}</li>`;
+        if (employee.position == 'Manager') {
+        card += `
+                <li class="list-group-item">Office Number: ${employee.office}</li>
+            </ul>
         </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">ID: 1</li>
-            <li class="list-group-item">Email: skylove@hotmale.com</li>
-            <li class="list-group-item">GitHub: Doctor-Worm</li>
-        </ul>
-    </div>
-    `;
+        `;
+        } else if (employee.position == 'Engineer') {
+            card += `
+                <li class="list-group-item">GitHub: ${employee.github}</li>
+            </ul>
+        </div>
+        `;
+        } else {
+            card += `
+                <li class="list-group-item">School: ${employee.school}</li>
+            </ul>
+        </div>
+        `;
+    }
+        console.log(card);
+        return card;
+    });
+   
 };
 
 // generates the webpage
-const generateWebpage = () => {
+const generatePage = (employees) => {
     return `
     <!DOCTYPE html>
     <html lang="en">
@@ -35,7 +55,7 @@ const generateWebpage = () => {
 
     <body>
         <div class="row justify-content-around py-4">
-            ${generateTeam()}
+            ${generateTeam(employees)}
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
@@ -43,3 +63,5 @@ const generateWebpage = () => {
     </html>
     `;
 };
+
+module.exports = generatePage;
