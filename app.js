@@ -10,7 +10,8 @@ function createTeam() {
     this.manager;
     this.engineer;
     this.intern;
-    this.employees = [];
+    this.team = {};
+    this.team.employees = [];
 };
 
 
@@ -43,7 +44,7 @@ createTeam.prototype.promptManager = function() {
             this.manager.id = id;
             this.manager.email = email;
             this.manager.office = office;
-            this.employees.push(this.manager);
+            this.team.employees.push(this.manager);
             // console.log(this.manager);
             // console.log(this.employees);
 
@@ -61,7 +62,7 @@ createTeam.prototype.promptNextOption = function() {
             choices: ['Add an engineer', 'Add an intern', "I'm finished building my team"]
         })
         .then(({ option }) => {
-            console.log(option);
+            // console.log(option);
             if (option == 'Add an engineer') {
                 console.log('Adding an Engineer!');
                 this.promptEngineer();
@@ -73,10 +74,17 @@ createTeam.prototype.promptNextOption = function() {
             else {
                 // generate page
                 console.log('Generating your team!');
+                console.log(this.team);
                 // console.log(this.employees);
-                const fileContent = generatePage(this.employees);
-                writeFile(fileContent);
-                copyFile();
+                async function generateFiles(userData) {
+                    let fileContent = await generatePage(userData);
+                    console.log('file content generated');
+                    const processedFile = await writeFile(fileContent);
+                    console.log(processedFile);
+                    const copyResponse = await copyFile();
+                    console.log(copyResponse);
+                }
+                generateFiles(this.team);
             }
             
         });
@@ -112,7 +120,7 @@ createTeam.prototype.promptEngineer = function() {
             this.engineer.id = id;
             this.engineer.email = email;
             this.engineer.github = github;
-            this.employees.push(this.engineer);
+            this.team.employees.push(this.engineer);
             // console.log(this.engineer);
             // console.log(this.employees);
 
@@ -151,7 +159,7 @@ createTeam.prototype.promptIntern = function() {
             this.intern.id = id;
             this.intern.email = email;
             this.intern.school = school;
-            this.employees.push(this.intern);
+            this.team.employees.push(this.intern);
             // console.log(this.intern);
             // console.log(this.employees);
 
