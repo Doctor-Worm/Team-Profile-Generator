@@ -1,57 +1,7 @@
 // genereates the cards with employee information
-// const generateTeam = employee => {
-//     console.log(employee);
-    // if (employee.office) {
-    //     return `
-    //     <div class="card shadow p-0 m-3 border-dark col-3">
-    //         <div class="card-header">Manager</div>
-    //         <div class="card-body">
-    //             <h5 class="cart-title">${employee.name}</h5>
-    //         </div>
-    //         <ul class="list-group list-group-flush">
-    //             <li class="list-group-item">ID: ${employee.id}</li>
-    //             <li class="list-group-item">Email: ${employee.email}</li>
-    //             <li class="list-group-item">Office Number: ${employee.office}</li>
-    //         </ul>
-    //     </div>
-    //     `;
-    // } else if (employee.github) {
-    //         return `
-    //     <div class="card shadow p-0 m-3 border-dark col-3">
-    //         <div class="card-header">Engineer</div>
-    //         <div class="card-body">
-    //             <h5 class="cart-title">${employee.name}</h5>
-    //         </div>
-    //         <ul class="list-group list-group-flush">
-    //             <li class="list-group-item">ID: ${employee.id}</li>
-    //             <li class="list-group-item">Email: ${employee.email}</li>
-    //             <li class="list-group-item">GitHub: ${employee.github}</li>
-    //         </ul>
-    //     </div>
-    //     `;
-    // } else if (employee.school) {
-    //         return `
-    //     <div class="card shadow p-0 m-3 border-dark col-3">
-    //         <div class="card-header">Intern</div>
-    //         <div class="card-body">
-    //             <h5 class="cart-title">${employee.name}</h5>
-    //         </div>
-    //         <ul class="list-group list-group-flush">
-    //             <li class="list-group-item">ID: ${employee.id}</li>
-    //             <li class="list-group-item">Email: ${employee.email}</li>
-    //             <li class="list-group-item">School: ${employee.school}</li>
-    //         </ul>
-    //     </div>
-    //     `;
-    // } else {
-    //     console.log('this aint workin');
-    // }
-// };
-
-
-// genereates the cards with employee information
-const generateTeam = (team) => {
-    let pageData = team.employees.forEach(employee => {
+const generateTeam = (employees) => {
+    let pageData = ``;
+    employees.forEach(employee => {
         let card = `
         <div class="card shadow p-0 m-3 border-dark col-3">
             <div class="card-header">${employee.position}</div>
@@ -60,7 +10,7 @@ const generateTeam = (team) => {
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">ID: ${employee.id}</li>
-                <li class="list-group-item">Email: ${employee.email}</li>`;
+                <li class="list-group-item"><a href="mailto:${employee.email}">Email: ${employee.email}</a></li>`;
         if (employee.position == 'Manager') {
         card += `
                 <li class="list-group-item">Office Number: ${employee.office}</li>
@@ -80,19 +30,18 @@ const generateTeam = (team) => {
         </div>
         `;
     }
-        // console.log(card);
-        return card;
-
-    }).join('');
-   console.log(pageData);
+        pageData += card;
+    })
+   return pageData;
 };
 
    
 
 
 // generates the webpage
-const generatePage = team => {
-    console.log(team);
+const generatePage = employees => {
+    // console.log(employees);
+    
     return `
     <!DOCTYPE html>
     <html lang="en">
@@ -111,7 +60,7 @@ const generatePage = team => {
 
     <body>
         <div class="row justify-content-around py-4">
-            ${generateTeam(team)}
+            ${generateTeam(employees)}
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
