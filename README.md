@@ -31,6 +31,6 @@ ___
 
 - **[Link to the GitHub Repository](https://github.com/Doctor-Worm/Team-Profile-Generator)**
 
-- **[Link to Walkthrough Video](https://doctor-worm.github.io/Weather-Dashboard/)**
+- **[Link to Walkthrough Video](https://drive.google.com/file/d/10ucH7n9y0a6LtCC3jWa8vuVHbG3Xvvpx/view)**
 
 ![Website Screenshot](/images/team-profile-generator-screenshot.png)
