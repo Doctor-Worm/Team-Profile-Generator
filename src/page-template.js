@@ -19,7 +19,7 @@ const generateTeam = (employees) => {
         `;
         } else if (employee.position == 'Engineer') {
             card += `
-                <li class="list-group-item">GitHub: ${employee.github}</li>
+                <li class="list-group-item"><a href="https://github.com/${employee.github}/ target="_blank">GitHub: ${employee.github}<a/></li>
             </ul>
         </div>
         `;

@@ -1,9 +1,7 @@
 # Team Profile Generator
 
 ## User Story
-- AS A manager
-- I WANT to generate a webpage that displays my team's basic info
-- SO THAT I have quick access to their emails and GitHub profiles
+As a manager of my team, I would like to generate a webpage that displays my team's basic info so that I have quick access to their emails and GitHub profiles.
 
 <br>
 
@@ -11,21 +9,28 @@ ___
 
 <br>
 
-## Acceptance Criteria
-- GIVEN a command-line application that accepts user input
-- WHEN I am prompted for my team members and their information
-  - THEN an HTML file is generated that displays a nicely formatted team roster based on user input
-- WHEN I click on an email address in the HTML
-  - THEN my default email program opens and populates the TO field of the email with the address
-- WHEN I click on the GitHub username
-  - THEN that GitHub profile opens in a new tab
-- WHEN I start the application
-  - THEN I am prompted to enter the team manager’s name, employee ID, email address, and office number
-- WHEN I enter the team manager’s name, employee ID, email address, and office number
-  - THEN I am presented with a menu with the option to add an engineer or an intern or to finish building my team
-- WHEN I select the engineer option
-  - THEN I am prompted to enter the engineer’s name, ID, email, and GitHub username, and I am taken back to the menu
-- WHEN I select the intern option
-  - THEN I am prompted to enter the intern’s name, ID, email, and school, and I am taken back to the menu
-- WHEN I decide to finish building my team
-  - THEN I exit the application, and the HTML is generated
+## Application Details
+- Uses a command-line application using the Inquirer package with Node.js that accepts user input
+- Prompts for my team members and their information, and then generates an HTML file that displays a nicely formatted team roster based on user input
+- The email address in the HTML opens the default email program and populates the TO field of the email with the address when clicked
+- The GitHub username opens that GitHub profile in a new tab when clicked
+
+___
+
+<br>
+
+## Challenges Faced
+- The most challenging thing I faced creating this application was getting the generateTeam() function to correctly return to me all of the user inputed data and append it to the HTML document. At first I was returning all of the data when I console.log()'ed it, but it kept returning undefined when I created my HTML document. I was able to fix this by, instead of returning my data (card), I inputed the data into an empty string literal after every time it looped through, and then returned the final string literal after it had all of the data pushed into it.
+- Being able to figure out how to get the inquirer prompts to function correctly within a chain of functions inside of a larger function was tricky at first. I had to make sure to put all of the inquirer prompts into array brackets.
+
+<br>
+
+## *Links to GitHub repository, walkthrough video, and a sample HTML file generated from this application :*
+
+<br>
+
+- **[Link to the GitHub Repository](https://github.com/Doctor-Worm/Team-Profile-Generator)**
+
+- **[Link to Walkthrough Video](https://doctor-worm.github.io/Weather-Dashboard/)**
+
+![Website Screenshot](/images/team-profile-generator-screenshot.png)
